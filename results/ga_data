@@ -1,0 +1,18 @@
+DGL backend not selected or invalid.  Assuming PyTorch for now.
+Setting the default backend to "pytorch". You can change it in the ~/.dgl/config.json file or export the DGLBACKEND environment variable.  Valid options are: pytorch, mxnet, tensorflow (all lowercase)
+Traceback (most recent call last):
+  File "new_data.py", line 8, in <module>
+    import dgl
+  File "/usr/local/lib/python3.6/site-packages/dgl/__init__.py", line 16, in <module>
+    from .backend import backend_name, load_backend  # usort: skip
+  File "/usr/local/lib/python3.6/site-packages/dgl/backend/__init__.py", line 122, in <module>
+    load_backend(get_preferred_backend())
+  File "/usr/local/lib/python3.6/site-packages/dgl/backend/__init__.py", line 57, in load_backend
+    mod = importlib.import_module(".%s" % mod_name, __name__)
+  File "/usr/local/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/usr/local/lib/python3.6/site-packages/dgl/backend/pytorch/__init__.py", line 2, in <module>
+    from .tensor import *
+  File "/usr/local/lib/python3.6/site-packages/dgl/backend/pytorch/tensor.py", line 16, in <module>
+    raise RuntimeError("DGL requires PyTorch >= 1.9.0")
+RuntimeError: DGL requires PyTorch >= 1.9.0
