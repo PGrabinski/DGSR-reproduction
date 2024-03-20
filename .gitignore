@@ -5,7 +5,8 @@ __pycache__
 
 results/
 jup
-*_neg
 
 
 NewData
+Data/*_graph
+*_neg
