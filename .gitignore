@@ -1,7 +1,8 @@
 .idea/
 
 .devcontainer/devcontainer.env
+__pycache__
 
-Data
-
-Newdata
+results/
+jup
+*_neg
