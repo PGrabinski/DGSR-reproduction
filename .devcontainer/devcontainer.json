@@ -15,6 +15,6 @@
           ]
         }
       },
-      "runArgs": ["--env-file",".devcontainer/devcontainer.env"]
+      "runArgs": ["--env-file",".devcontainer/devcontainer.env", "--gpus=all"]
 
 }

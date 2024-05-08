@@ -52,9 +52,30 @@ parser.add_argument("--model_record", action='store_true', default=False, help='
 
 opt = parser.parse_args()
 args, extras = parser.parse_known_args()
-os.environ["CUDA_VISIBLE_DEVICES"] = opt.gpu
-device = torch.device('cuda:0')
+
+# Hides the GPU - how?
+# os.environ["CUDA_VISIBLE_DEVICES"] = opt.gpu
 print(opt)
+
+print(f"Is CUDA available: {torch.cuda.is_available()}")
+
+
+num_gpus = torch.cuda.device_count()
+print(f"Number of GPUs: {num_gpus}")
+
+device = torch.device('cuda:0')
+print(f"Current GPU: {device}")
+
+if num_gpus > 0:
+    gpu_name = torch.cuda.get_device_name(0)
+    print(f"GPU Name: {gpu_name}")
+
+# Create a tensor and move it to GPU
+tensor = torch.rand(3, 3)
+tensor = tensor.cuda()  # Move tensor to GPU
+print(tensor.is_cuda) 
+
+torch._C._cuda_init()
 
 if opt.record:
     log_file = f'results/{opt.data}_ba_{opt.batchSize}_G_{opt.gpu}_dim_{opt.hidden_size}_ulong_{opt.user_long}_ilong_{opt.item_long}_' \
